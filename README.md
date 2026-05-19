@@ -1,104 +1,169 @@
-# WhatToEatTodayApp
+# 三餐有意思 | What To Eat Today
 
-「What To Eat Today / 三餐有意思」项目仓库，包含：
-- **小程序端（Taro + React）**：`miniprogram/`
-- **云函数（aiService）**：`miniprogram/cloudfunctions/aiService/`
-- （可选）Web 端原型：`src/`（非小程序主入口）
-<img width="2560" height="922" alt="image" src="https://github.com/user-attachments/assets/5bcb3c7a-6939-4720-bb56-9a1640f97e43" />
+> 每天不知道吃什么？拍一张冰箱照片，AI 帮你规划今天吃什么。
 
+[![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![Taro](https://img.shields.io/badge/Taro-4.x-007FFF?style=flat)](https://taro.zone/)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat&logo=react)](https://react.dev)
 
-## 目录结构
+---
 
-- `miniprogram/`: 微信小程序（Taro 4.x + React）
-  - `src/services/qwen.ts`: 前端统一调用云函数 `aiService`（对话/视觉/生图）
-  - `src/pages/discovery/`: AI 图片识别导入菜谱
-  - `src/pages/recipe-detail/`: 菜谱详情与 AI 生成封面
-  - `cloudfunctions/aiService/index.js`: AI 云函数入口（CloudBase AI / 自定义 OpenAI 兼容模型）
-- `scripts/`: 本地调试脚本
-  - `miniprogram/scripts/test-dashscope-imggen.mjs`: 本地验证 DashScope 生图接口（不依赖小程序/云函数）
+## 目录
 
-## 环境要求
+- [截图](#截图)
+- [它是什么](#它是什么)
+- [为什么做](#为什么做)
+- [核心功能](#核心功能)
+- [快速开始](#快速开始)
+- [技术架构](#技术架构)
+- [Roadmap](#roadmap)
+- [FAQ](#faq)
+- [谁适合用](#谁适合用)
+- [关于我](#关于我)
 
-- Node.js（建议 LTS）
-- 微信开发者工具（开启云开发）
-- 云开发环境（用于部署云函数、云存储）
+---
 
-## 快速开始（小程序）
+## 截图
 
-在 `miniprogram/` 目录执行：
+<img width="2560" height="922" alt="三餐有意思界面" src="https://github.com/user-attachments/assets/5bcb3c7a-6939-4720-bb56-9a1640f97e43" />
+
+---
+
+## 它是什么
+
+一个**微信小程序**，帮你解决"今天吃什么"这个世纪难题。
+
+**你可以用它来：**
+- 拍一张冰箱照片，AI 自动识别食材，推荐你今天做什么菜
+- 发现新菜谱，AI 自动生成精美封面图
+- 管理你的个人菜谱库，收藏喜欢的菜谱
+
+所有 AI 能力通过云函数调用，不需要你配置任何 API Key。
+
+---
+
+## 为什么做
+
+每天下班回家，打开冰箱，面对一堆食材发呆——"今天吃什么？"
+
+试过很多菜谱 App，要么推荐的菜太复杂，要么家里根本没有那些食材。
+
+这个小程序的思路：**直接拍冰箱，AI 看看你有什么，然后告诉你能做什么**。不需要你手动输入食材，拍照就行。
+
+---
+
+## 核心功能
+
+| 你能做什么 | 说明 |
+|-----------|------|
+| **拍照识菜** | 拍冰箱照片，AI 自动识别食材并推荐菜谱 |
+| **AI 生图** | 菜谱详情页自动生成精美封面图 |
+| **个人菜谱库** | 收藏、管理你喜欢的菜谱 |
+| **AI 对话** | 和 AI 聊天，问它怎么做菜、营养搭配等 |
+| **云函数集成** | 所有 AI 能力走云函数，安全可靠 |
+
+---
+
+## 快速开始
 
 ```bash
+# 1. 进入小程序目录
+cd miniprogram
+
+# 2. 安装依赖
 npm install
+
+# 3. 启动开发模式
 npm run dev:weapp
 ```
 
-然后用微信开发者工具导入 `miniprogram/` 目录。
+然后用微信开发者工具导入 `miniprogram/` 目录，开启云开发即可。
 
-## 云函数部署与环境变量
+### 云函数部署
 
-云函数：`miniprogram/cloudfunctions/aiService`
+AI 能力通过 `aiService` 云函数提供：
 
-当前 AI 调用统一由小程序端调用 `aiService` 云函数，云函数内部再通过 CloudBase AI 能力调用模型：
-
-- 文本生成：CloudBase `hunyuan-exp`，默认模型 `hunyuan-2.0-instruct-20251111`
-- 图片识别/图生文：优先使用 CloudBase 自定义模型厂商 `dashscope-custom`，模型 `qwen3.5-omni-flash`
-- AI 生成封面：CloudBase 生图模型 `hunyuan-image`
-
-> 注意：`aiService` 依赖 `@cloudbase/node-sdk`。部署时需要上传整个 `miniprogram/cloudfunctions/aiService/` 目录，包括 `package.json`、`package-lock.json` 和依赖安装结果，不能只替换 `index.js`。
-
-### CloudBase 控制台模型配置
-
-在 CloudBase 控制台的 `AI` 模块中确认以下能力：
-
-1. `生文模型`
-   - 启用 `hunyuan-exp`
-   - 可用模型包含 `hunyuan-2.0-instruct-20251111` / `hunyuan-turbos-latest`
-2. `生图模型`
-   - 启用 `hunyuan-image`
-   - 生图尺寸使用 `1024x1024` 这类 `x` 格式，不使用 `1024*1024`
-3. `全模态/图生文`
-   - 新增自定义模型厂商，模型分组名为 `dashscope-custom`
-   - Base URL：`https://dashscope.aliyuncs.com/compatible-mode/v1`
-   - 模型名：`qwen3.5-omni-flash`
-   - API Key 只配置在 CloudBase 控制台，**不要写进代码或提交到仓库**
-
-部署云函数后，小程序端会通过 `Taro.cloud.callFunction({ name: 'aiService' })` 调用。
-
-## 本地云函数调试（可选）
-
-如果你在开发者工具里开启了“调用本地云函数/本地调试”，请确认本地 `cloudfunctions/aiService` 已执行依赖安装：
-
-```powershell
+```bash
 cd miniprogram/cloudfunctions/aiService
 npm install
 ```
 
-并重启本地云函数调试进程/重启开发者工具。
+在 CloudBase 控制台确认以下能力已启用：
+- 文本生成：`hunyuan-exp`
+- 图生文：`dashscope-custom / qwen3.5-omni-flash`
+- 生图：`hunyuan-image`
 
-## 常见问题
+---
 
-### 1. `Cloud API isn't enabled, please call wx.cloud.init first`
-说明云开发未初始化。项目已在小程序入口显式初始化环境 `cloud1-d5g1waohpc2fbf6bf`，若仍出现，请确认开发者工具已开启云开发并选择同一云环境。
+## 技术架构
 
-### 2. 云函数超时（`-504003 Invoking task timed out after 3 seconds`）
-把云函数 `aiService` 的超时时间调大（视觉/生图建议 ≥ 60s）。
+```
+┌────────────────────────────────────────┐
+│     微信小程序 (Taro 4.x + React)      │
+│  拍照识别 · 菜谱浏览 · AI 对话          │
+├────────────────────────────────────────┤
+│     CloudBase 云函数 (aiService)       │
+│  文本生成 · 图片识别 · AI 生图          │
+├────────────────────────────────────────┤
+│     AI 模型层                          │
+│  混元大模型 · DashScope Qwen            │
+├────────────────────────────────────────┤
+│     CloudBase 云开发                    │
+│  云数据库 · 云存储 · 用户鉴权           │
+└────────────────────────────────────────┘
+```
 
-### 3. `ai.createModel is not a function`
-通常是云函数仍在使用旧版本代码或旧依赖。确认 `aiService` 已安装并部署 `@cloudbase/node-sdk@3.x`，服务端需要先调用 `app.ai()` 后再使用 `createModel()`。
+---
 
-### 4. 图生文报 `model验证失败`
-通常是把文本模型（如 `hunyuan-turbos-latest`）用于图片输入。图生文需要全模态模型，当前项目优先使用 `dashscope-custom / qwen3.5-omni-flash`。
+## Roadmap
 
-### 5. 生图报 `size not match`
-CloudBase `hunyuan-image` 的尺寸格式为 `1024x1024`、`768x1024` 等。项目已在前端和云函数侧做格式归一化，会把旧格式 `1024*1024` 转为 `1024x1024`。
+- [x] AI 图片识别导入菜谱
+- [x] AI 自动生成菜谱封面
+- [x] 云函数统一 AI 调用
+- [ ] 菜谱营养分析
+- [ ] 个人饮食记录
+- [ ] 社区分享菜谱
+- [ ] 智能周菜谱规划
 
-## AI 接入复盘
+---
 
-本轮 AI 接入最终结论：
+## FAQ
 
-- 前端不再直连模型网关，所有 AI 能力统一走 `aiService` 云函数，避免小程序端 token/环境权限不一致导致 401。
-- `wx-server-sdk@3.0.4` 不包含 `cloud.extend.AI` 服务端能力，云函数必须使用 `@cloudbase/node-sdk@3.x` 的 `app.ai()`。
-- 服务端 `streamText` 入参是 `{ model, messages }`，不是小程序端示例里的 `{ data: { model, messages } }`。
-- CloudBase 内置 `hunyuan-exp` 文本生成已跑通。
-- 腾讯侧 `hunyuan-vision` 当前环境未授权，图片识别改为 CloudBase 自定义 OpenAI 兼容模型 `dashscope-custom / qwen3.5-omni-flash`。
-- 生图使用 `hunyuan-image`，云函数通过 `ai.createImageModel('hunyuan-exp').generateImage()` 调用。
+**Q: 需要自己配置 API Key 吗？**
+A: 不需要。所有 AI 能力通过 CloudBase 云函数调用，API Key 配置在云开发控制台，不在代码中。
+
+**Q: 支持哪些 AI 模型？**
+A: 文本生成用混元大模型，图片识别用 DashScope Qwen，生图用混元生图模型。
+
+**Q: 云函数超时怎么办？**
+A: 在 CloudBase 控制台把 `aiService` 云函数的超时时间调大，视觉/生图建议 ≥ 60 秒。
+
+**Q: 只能用微信吗？**
+A: 当前版本是微信小程序。Taro 框架支持多端编译，理论上可以扩展到 H5 和 App。
+
+---
+
+## 谁适合用
+
+- **不知道吃什么的打工人**：拍照冰箱，AI 帮你决定
+- **喜欢做饭但没灵感的人**：AI 推荐新菜谱，自动生成封面
+- **小程序开发者**：参考 Taro + CloudBase + AI 的集成方案
+- **对 AI 应用感兴趣的人**：云函数调用大模型的完整案例
+
+---
+
+## 关于我
+
+我是**肖恩沃尔特**（Sean Walter），一个从测试工程师正在转型为 AI 独立开发者的程序员。
+
+"三餐有意思"是我把 AI 和日常生活结合的一个尝试——用技术解决"今天吃什么"这个小问题。
+
+- GitHub: [Dream22180971](https://github.com/Dream22180971)
+- Twitter/X: [@sean_walter0717](https://x.com/sean_walter0717)
+- 博客: [seanwalter.top](https://seanwalter.top)
+
+---
+
+## License
+
+[MIT](./LICENSE)
