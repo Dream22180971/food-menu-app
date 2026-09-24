@@ -31,7 +31,7 @@ It combines:
 
 ---
 
-## Demo
+## 🎬 Demo
 
 <div align="center">
 
@@ -43,7 +43,7 @@ It combines:
 
 ---
 
-## Quick Start
+## ⚡ Quick Start
 
 ```bash
 git clone https://github.com/Dream22180971/food-menu-app.git
@@ -57,7 +57,7 @@ Open `http://localhost:3000`.
 
 ---
 
-## Core Experience
+## ✨ Core Experience
 
 | Area | What it does |
 |---|---|
@@ -70,7 +70,7 @@ Open `http://localhost:3000`.
 
 ---
 
-## AI Features
+## 🧠 AI Features
 
 The app includes AI service hooks for:
 
@@ -82,7 +82,7 @@ The exact AI behavior depends on the configured model/service environment.
 
 ---
 
-## Product Direction
+## 🧭 Product Direction
 
 The product is intentionally not just a recipe catalog. The stronger direction is:
 
@@ -100,7 +100,7 @@ That turns recipes into a lightweight daily meal workflow.
 
 ---
 
-## Stack
+## 🛠 Stack
 
 ```text
 React 19
@@ -114,7 +114,7 @@ localStorage fallback
 
 ---
 
-## Roadmap
+## 🗺 Roadmap
 
 - [x] recipe cards and discovery
 - [x] daily meal logs
@@ -129,7 +129,7 @@ localStorage fallback
 
 ---
 
-## Current Limitations
+## ⚠️ Current Limitations
 
 - AI functionality depends on environment configuration
 - local fallback storage is device-specific
@@ -137,7 +137,7 @@ localStorage fallback
 
 ---
 
-## License
+## 📄 License
 
 [MIT](./LICENSE)
 
