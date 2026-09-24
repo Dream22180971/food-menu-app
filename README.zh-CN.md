@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Space+Grotesk&weight=700&size=30&duration=2300&pause=900&color=F97316&center=true&vCenter=true&width=900&lines=WHAT+SHOULD+I+EAT+TODAY%3F;AI+MEAL+IDEAS+%C2%B7+RECIPES+%C2%B7+DAILY+LOGS" alt="Typing SVG" />
-
 # 三餐有意思 · What To Eat Today
 
 **一个围绕“今天吃什么”的 AI 饮食小助手：推荐、菜谱、饮食记录和购物清单。**
