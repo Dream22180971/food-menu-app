@@ -1,3 +1,37 @@
+Turn what is in your fridge into practical meal ideas with AI. / 拍下冰箱里的食材，让 AI 帮你决定今天吃什么。
+
+<!-- README-V2-BILINGUAL -->
+
+# food-menu-app
+
+> **EN:** Turn what is in your fridge into practical meal ideas with AI.  
+> **中文：** 拍下冰箱里的食材，让 AI 帮你决定今天吃什么。
+
+## Demo / 演示
+
+Existing app screenshot is kept below; demo GIF is not yet included. / 现有应用截图保留在下方，GIF 待补。
+
+## Quick Start / 5 分钟快速开始
+
+```bash
+git clone https://github.com/Dream22180971/food-menu-app.git
+cd food-menu-app
+npm install
+npm run dev:weapp
+```
+
+> **EN:** The commands above are intentionally kept short: clone, install, run. Project-specific configuration and advanced usage stay in the detailed documentation below.  
+> **中文：** 上面的命令刻意保持最短路径：克隆、安装、运行。项目特定配置与高级用法继续保留在下方详细文档中。
+
+## Why this project / 为什么做这个项目
+
+**EN:** This repository is built around one concrete problem and aims to be understandable, runnable and useful before becoming complex.
+
+**中文：** 这个仓库围绕一个明确问题构建，优先做到易理解、能运行、真正有用，再逐步增加复杂能力。
+
+---
+
+<!-- ORIGINAL-DOCS -->
 # 三餐有意思 | What To Eat Today
 
 > 每天不知道吃什么？拍一张冰箱照片，AI 帮你规划今天吃什么。
