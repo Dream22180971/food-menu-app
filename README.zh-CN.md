@@ -15,7 +15,7 @@
 
 ---
 
-## 它是什么
+## 🎯 它是什么
 
 当前版本已经是 React Web 应用，重点解决每天真实的吃饭决策。
 
@@ -31,7 +31,7 @@
 
 ---
 
-## 演示
+## 🎬 演示
 
 <div align="center">
 
@@ -43,7 +43,7 @@
 
 ---
 
-## 5 分钟快速开始
+## ⚡ 5 分钟快速开始
 
 ```bash
 git clone https://github.com/Dream22180971/food-menu-app.git
@@ -57,7 +57,7 @@ npm run dev
 
 ---
 
-## 核心体验
+## ✨ 核心体验
 
 | 区域 | 作用 |
 |---|---|
@@ -70,7 +70,7 @@ npm run dev
 
 ---
 
-## AI 能力
+## 🧠 AI 能力
 
 当前代码包含：
 
@@ -82,7 +82,7 @@ npm run dev
 
 ---
 
-## 产品方向
+## 🧭 产品方向
 
 它不只是“菜谱列表”，更适合往一个轻量日常饮食工作流发展：
 
@@ -98,7 +98,7 @@ npm run dev
 
 ---
 
-## 技术栈
+## 🛠 技术栈
 
 ```text
 React 19
@@ -112,7 +112,7 @@ localStorage fallback
 
 ---
 
-## 路线图
+## 🗺 路线图
 
 - [x] 菜谱卡片与发现
 - [x] 每日饮食记录
@@ -127,7 +127,7 @@ localStorage fallback
 
 ---
 
-## 当前限制
+## ⚠️ 当前限制
 
 - AI 能力依赖环境配置
 - 本地兜底数据只属于当前设备
@@ -135,7 +135,7 @@ localStorage fallback
 
 ---
 
-## License
+## 📄 License
 
 [MIT](./LICENSE)
 
