@@ -1,49 +1,49 @@
 <div align="center">
 
-# What To Eat Today · 三餐有意思
+# 三餐有意思 · What To Eat Today
 
-**A warm AI meal planner for recipe ideas, daily food logs and “what should I eat?” moments.**
+**一个围绕“今天吃什么”的 AI 饮食小助手：推荐、菜谱、饮食记录和购物清单。**
 
-[English](./README.md) | [简体中文](./README.zh-CN.md)
+[简体中文](./README.md) | [English](./README.en.md)
 
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev)
-[![AI](https://img.shields.io/badge/AI-Gemini-F97316?style=for-the-badge)](#ai-features)
+[![AI](https://img.shields.io/badge/AI-Gemini-F97316?style=for-the-badge)](#ai-能力)
 [![License](https://img.shields.io/badge/LICENSE-MIT-10B981?style=for-the-badge)](./LICENSE)
 
 </div>
 
 ---
 
-## What it is
+## 🎯 它是什么
 
-The current version is a React web app focused on everyday meal decisions.
+当前版本已经是 React Web 应用，重点解决每天真实的吃饭决策。
 
-It combines:
+它把这些能力放到一个流程里：
 
-- AI-assisted recommendations
-- recipe collection
-- daily meal logging
-- shopping lists
-- favorites
-- content / image-based recipe parsing
-- local fallback storage
+- AI 推荐今天吃什么
+- 管理个人菜谱
+- 记录每天吃了什么
+- 维护购物清单
+- 收藏喜欢的菜
+- 从内容 / 图片辅助解析菜谱
+- 本地数据兜底
 
 ---
 
-## 🎬 Demo
+## 🎬 演示
 
 <div align="center">
 
-<img width="92%" alt="What To Eat Today" src="https://github.com/user-attachments/assets/5bcb3c7a-6939-4720-bb56-9a1640f97e43" />
+<img width="92%" alt="三餐有意思" src="https://github.com/user-attachments/assets/5bcb3c7a-6939-4720-bb56-9a1640f97e43" />
 
 </div>
 
-> The repository used to target a mini-program architecture. The current codebase is React 19 + Vite; this README follows the current implementation.
+> 这个仓库早期 README 还是“小程序 / Taro”定位，但当前代码已经是 React 19 + Vite，本版文档以当前代码为准。
 
 ---
 
-## ⚡ Quick Start
+## ⚡ 5 分钟快速开始
 
 ```bash
 git clone https://github.com/Dream22180971/food-menu-app.git
@@ -53,54 +53,52 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+访问 `http://localhost:3000`。
 
 ---
 
-## ✨ Core Experience
+## ✨ 核心体验
 
-| Area | What it does |
+| 区域 | 作用 |
 |---|---|
-| Home | AI meal recommendations and daily food log |
-| Discovery | browse and search recipes |
-| Shopping | maintain a grocery / ingredient list |
-| Favorites | save recipes you want to revisit |
-| AI parsing | extract recipe information from supplied content |
-| Local fallback | keep basic data in `localStorage` when needed |
+| 首页 | AI 推荐 + 当日饮食记录 |
+| 发现 | 浏览 / 搜索菜谱 |
+| 清单 | 管理食材和购物项 |
+| 收藏 | 保存以后还想做的菜 |
+| AI 解析 | 从提供的内容里提取菜谱信息 |
+| 本地兜底 | 需要时使用 `localStorage` 保留基础数据 |
 
 ---
 
-## 🧠 AI Features
+## 🧠 AI 能力
 
-The app includes AI service hooks for:
+当前代码包含：
 
-- meal recommendations
-- recipe parsing
-- content-assisted recipe creation
+- 菜品推荐
+- 菜谱解析
+- 内容辅助生成菜谱
 
-The exact AI behavior depends on the configured model/service environment.
+具体 AI 效果取决于本地环境中配置的模型和服务。
 
 ---
 
-## 🧭 Product Direction
+## 🧭 产品方向
 
-The product is intentionally not just a recipe catalog. The stronger direction is:
+它不只是“菜谱列表”，更适合往一个轻量日常饮食工作流发展：
 
 ```text
-What do I have?
-      ↓
-What can I cook?
-      ↓
-What did I eat today?
-      ↓
-What should I buy next?
+我有什么？
+   ↓
+能做什么？
+   ↓
+今天吃了什么？
+   ↓
+下一次该买什么？
 ```
-
-That turns recipes into a lightweight daily meal workflow.
 
 ---
 
-## 🛠 Stack
+## 🛠 技术栈
 
 ```text
 React 19
@@ -114,26 +112,26 @@ localStorage fallback
 
 ---
 
-## 🗺 Roadmap
+## 🗺 路线图
 
-- [x] recipe cards and discovery
-- [x] daily meal logs
-- [x] favorites
-- [x] shopping list
-- [x] AI recommendations
-- [ ] stronger ingredient recognition flow
-- [ ] weekly meal planning
-- [ ] nutrition summaries
-- [ ] better sync / account model
-- [ ] shareable recipe cards
+- [x] 菜谱卡片与发现
+- [x] 每日饮食记录
+- [x] 收藏
+- [x] 购物清单
+- [x] AI 推荐
+- [ ] 更完整的食材识别流程
+- [ ] 周菜谱规划
+- [ ] 营养总结
+- [ ] 更完善的同步 / 账号方案
+- [ ] 可分享菜谱卡
 
 ---
 
-## ⚠️ Current Limitations
+## ⚠️ 当前限制
 
-- AI functionality depends on environment configuration
-- local fallback storage is device-specific
-- some older README assumptions no longer apply to the current React codebase
+- AI 能力依赖环境配置
+- 本地兜底数据只属于当前设备
+- 旧 README 中部分“小程序”说明已经不适用于当前代码
 
 ---
 
@@ -143,6 +141,6 @@ localStorage fallback
 
 <div align="center">
 
-**Less staring at the fridge. More actually eating well.**
+**少一点站在冰箱前发呆，多一点好好吃饭。**
 
 </div>
